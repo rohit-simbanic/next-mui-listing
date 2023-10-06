@@ -16,7 +16,6 @@ import CtaComponent from "./components/CTA";
 import SubFooterComponent from "./components/SubFooter";
 import MainFooterComponent from "./components/MainFooter";
 import ScrollBottomToTop from "./components/ScrollTop";
-import Carousel from "./components/Carousel";
 
 export default function Home() {
   const theme = useTheme();
@@ -38,11 +37,6 @@ export default function Home() {
   );
   const isMdBreakpoint = useMediaQuery(theme.breakpoints.down("md"));
   const photo = require("@/public/images/about/women.jpg");
-  const images = [
-    require("@/public/images/slider/img1.jpg"),
-    require("@/public/images/slider/img2.jpg"),
-    require("@/public/images/slider/img3.jpg"),
-  ];
 
   return (
     <main>
@@ -65,7 +59,6 @@ export default function Home() {
             <CTAItem item="Schedule A Visit" />
           </CTAWrapper>
         </AppBarWrapper>
-        <Carousel images={images} />
         <AboutComponent photo={photo.default.src} bio="bio" />
         <CtaComponent />
         <SubFooterComponent />
