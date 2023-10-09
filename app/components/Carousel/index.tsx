@@ -28,16 +28,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   const progressCircle = useRef<SVGSVGElement | null>(null);
   const progressContent = useRef<HTMLSpanElement | null>(null);
 
-  //   const onAutoplayTimeLeft = (s: number, time: number, progress: number) => {
-  //     if (progressCircle.current && progressContent.current) {
-  //       progressCircle.current.style.setProperty(
-  //         "--progress",
-  //         String(1 - progress)
-  //       );
-  //       progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  //     }
-  //   };
-
   useEffect(() => {
     // Update window width when the window is resized
     const handleResize = () => {
@@ -68,7 +58,6 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         navigation={true}
         modules={[Pagination, Navigation, Scrollbar, EffectFade, Autoplay]}
         scrollbar={true}
-        // onAutoplayTimeLeft={onAutoplayTimeLeft}
         className="mySwiper"
       >
         {images.map((image, index) => (
