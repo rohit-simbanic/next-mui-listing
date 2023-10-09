@@ -23,7 +23,9 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
-  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth); // Track window width
+  const [windowWidth, setWindowWidth] = useState<number | undefined>(
+    typeof window !== "undefined" ? window.innerWidth : undefined
+  );
 
   const progressCircle = useRef<SVGSVGElement | null>(null);
   const progressContent = useRef<HTMLSpanElement | null>(null);
@@ -31,15 +33,20 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
   useEffect(() => {
     // Update window width when the window is resized
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setWindowWidth(
+        typeof window !== "undefined" ? window.innerWidth : undefined
+      );
     };
 
-    window.addEventListener("resize", handleResize);
+    // Check if window is defined (client-side) before adding the event listener
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
 
-    // Clean up the event listener when component unmounts
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+      // Clean up the event listener when component unmounts
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   const imageHeight = windowWidth <= 768 ? 300 : 800;
