@@ -5,9 +5,9 @@ import { Box, Grid, styled, Container } from "@mui/material";
 
 const About = styled(Box)(
   ({ theme }) => `
-        padding: ${theme.spacing(5, 0, 0)};
+        padding: ${theme.spacing(10, 0, 3)};
         @media (max-width: ${theme.breakpoints.values.md}px) {
-          padding-top: ${theme.spacing(1.3)}
+          padding-top: ${theme.spacing(9.3)}
         }
 `
 );
