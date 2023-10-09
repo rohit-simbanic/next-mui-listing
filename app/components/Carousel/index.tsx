@@ -23,33 +23,9 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
-  const [windowWidth, setWindowWidth] = useState<number | undefined>(
-    typeof window !== "undefined" ? window.innerWidth : undefined
-  );
-
   const progressCircle = useRef<SVGSVGElement | null>(null);
   const progressContent = useRef<HTMLSpanElement | null>(null);
 
-  useEffect(() => {
-    // Update window width when the window is resized
-    const handleResize = () => {
-      setWindowWidth(
-        typeof window !== "undefined" ? window.innerWidth : undefined
-      );
-    };
-
-    // Check if window is defined (client-side) before adding the event listener
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-
-      // Clean up the event listener when component unmounts
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
-
-  const imageHeight = (windowWidth ?? 0) <= 768 ? 300 : 800;
   return (
     <>
       <Swiper
@@ -73,7 +49,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}
-                style={{ width: "100%", height: `${imageHeight}px` }}
+                style={{ width: "100%", height: "800px" }}
               />
             </SwiperSlide>
             <div className="autoplay-progress" slot="container-end">
