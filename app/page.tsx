@@ -18,7 +18,6 @@ import MainFooterComponent from "./components/MainFooter";
 import ScrollBottomToTop from "./components/ScrollTop";
 import Carousel from "./components/Carousel";
 import SaleComponent from "./components/Sale";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const theme = useTheme();
@@ -45,7 +44,7 @@ export default function Home() {
     require("@/public/images/slider/img2.jpg"),
     require("@/public/images/slider/img3.jpg"),
   ];
-  const router = useRouter();
+
   return (
     <main>
       <MyReportWrapper>
