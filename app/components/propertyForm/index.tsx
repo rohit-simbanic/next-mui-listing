@@ -388,7 +388,7 @@ const AddPropertyForm: React.FC = () => {
         <br />
         <div style={{ display: "flex", alignItems: "center" }}>
           <ButtonComponent
-            text={id ? "Update Property" : "Add Property"}
+            text={id ? "Update Property" : "Add Property +"}
             type="submit"
             style={{ margin: 0 }}
             disabled={progress !== null && progress < 100}

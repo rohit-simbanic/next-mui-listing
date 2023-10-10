@@ -7,7 +7,7 @@ const SingleProperty = () => {
   console.log(params);
   return (
     <div>
-      <h3>id is `${params.id}`</h3>
+      <h3>id is {`${params.id}`}</h3>
     </div>
   );
 };
