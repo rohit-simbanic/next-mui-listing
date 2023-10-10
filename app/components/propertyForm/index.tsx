@@ -139,7 +139,7 @@ const AddPropertyForm: React.FC = () => {
       }
     } else {
       try {
-        // @ts-ignore: Unreachable code error
+        // @ts-ignore: Unreachable code errors
         await updateDoc(doc(db, "properties", id), {
           ...formData,
           timestamp: serverTimestamp(),

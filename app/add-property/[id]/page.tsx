@@ -131,7 +131,8 @@ const AddPropertyForm: React.FC = () => {
     console.log("Submitted Data:", formData);
     if (!id) {
       try {
-        await addDoc(collection(db, "properties"), {
+        const collectionRef = collection(db, "properties"); // Reference to the "properties" collection
+        await addDoc(collectionRef, {
           ...formData,
           timestamp: serverTimestamp(),
         });
@@ -140,7 +141,9 @@ const AddPropertyForm: React.FC = () => {
       }
     } else {
       try {
-        await updateDoc(doc(db, "properties", id), {
+        // @ts-ignore: Unreachable code error
+        const docRef = doc(db, "properties", id); // Reference to a specific document within the "properties" collection
+        await updateDoc(docRef, {
           ...formData,
           timestamp: serverTimestamp(),
         });
@@ -155,6 +158,7 @@ const AddPropertyForm: React.FC = () => {
     if (!id) {
       return;
     }
+    // @ts-ignore: Unreachable code error
     const docRef = doc(db, "properties", id);
     const snapshot = await getDoc(docRef);
     if (snapshot.exists()) {
