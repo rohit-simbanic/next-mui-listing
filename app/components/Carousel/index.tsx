@@ -44,7 +44,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
       };
     }
   }, []);
-  const imageHeight = (windowWidth ?? 0) <= 768 ? 300 : 800;
+  const imageHeight = windowWidth <= 768 ? 300 : 800;
 
   return (
     <>
