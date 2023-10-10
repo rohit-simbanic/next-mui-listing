@@ -15,7 +15,7 @@ import {
   EffectFade,
   Autoplay,
 } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 
 interface CarouselProps {
@@ -23,28 +23,11 @@ interface CarouselProps {
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {
-  const [windowWidth, setWindowWidth] = useState<number | undefined>(
-    typeof window !== "undefined" ? window.innerWidth : undefined
-  );
+  const theme = useTheme();
   const progressCircle = useRef<SVGSVGElement | null>(null);
   const progressContent = useRef<HTMLSpanElement | null>(null);
-  useEffect(() => {
-    // Update window width when the window is resized
-    const handleResize = () => {
-      setWindowWidth(
-        typeof window !== "undefined" ? window.innerWidth : undefined
-      );
-    };
-    // Check if window is defined (client-side) before adding the event listener
-    if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-      // Clean up the event listener when component unmounts
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
-  const imageHeight = windowWidth <= 768 ? 300 : 800;
+
+  const mobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
@@ -61,7 +44,7 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         navigation={true}
         modules={[Pagination, Navigation, Scrollbar, EffectFade, Autoplay]}
         scrollbar={true}
-        className="mySwiper"
+        className="my-swiper"
       >
         {images.map((image, index) => (
           <Box key={index} style={{ maxHeight: "100%", overflow: "hidden" }}>
@@ -69,7 +52,10 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
               <Image
                 src={image}
                 alt={`Slide ${index + 1}`}
-                style={{ width: "100%", height: `${imageHeight}px` }}
+                style={{
+                  width: "100%",
+                  height: mobile ? "300px" : "700px",
+                }}
               />
             </SwiperSlide>
             <div className="autoplay-progress" slot="container-end">

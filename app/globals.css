@@ -30,3 +30,6 @@
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
 }
+.desktop-swiper {
+  height: 700px;
+}
