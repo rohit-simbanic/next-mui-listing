@@ -365,7 +365,7 @@ const PropertyCardFetched = () => {
                                     background: theme.colors.alpha.white[100],
                                   }}
                                   onClick={() => {
-                                    router.push(`/update-property/${item.id}`);
+                                    router.push(`/add-property/${item.id}`);
                                   }}
                                 >
                                   <EditIcon />
