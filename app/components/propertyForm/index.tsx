@@ -9,7 +9,6 @@ import {
   InputLabel,
 } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
 import {
   deleteObject,
   getDownloadURL,
